@@ -10,11 +10,11 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-SNOWFLAKE_DATABASE = 'beaconfire'
+SNOWFLAKE_DATABASE = 'ETL_DB'
 SNOWFLAKE_SCHEMA = 'dev_db'
 
-SNOWFLAKE_ROLE = 'AW_developer'
-SNOWFLAKE_WAREHOUSE = 'aw_etl'
+SNOWFLAKE_ROLE = 'BF_developer'
+SNOWFLAKE_WAREHOUSE = 'BF_etl'
 SNOWFLAKE_STAGE = 'beaconfire_stage'
  #S3_FILE_PATH = '</path/to/file/sample_file.csv'
 
