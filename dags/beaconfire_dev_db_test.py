@@ -10,7 +10,7 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-SNOWFLAKE_DATABASE = 'ETL_DB'
+SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'dev_db'
 
 SNOWFLAKE_ROLE = 'BF_developer'
