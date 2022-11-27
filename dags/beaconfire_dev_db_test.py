@@ -70,6 +70,7 @@ with DAG(
     snowflake_op_template_file = SnowflakeOperator(
        task_id='snowflake_op_template_file',
        sql='beaconfire_dev_db_test.sql',
+       split_statements=True,
     )
 
     # [END howto_operator_snowflake]
