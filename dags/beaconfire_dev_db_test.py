@@ -3,10 +3,9 @@ Example use of Snowflake related operators.
 """
 import os
 from datetime import datetime
-
 from airflow import DAG
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
-#from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeOperator
+
 
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
@@ -15,11 +14,10 @@ SNOWFLAKE_SCHEMA = 'DEV_DB'
 
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-SNOWFLAKE_STAGE = 'beaconfire_stage'
- #S3_FILE_PATH = '</path/to/file/sample_file.csv'
+#SNOWFLAKE_STAGE = 'beaconfire_stage'
+
 
 SNOWFLAKE_SAMPLE_TABLE = 'airflow_testing'
-
 # SQL commands
 CREATE_TABLE_SQL_STRING = (
     f"CREATE OR REPLACE TRANSIENT TABLE {SNOWFLAKE_SAMPLE_TABLE} (name VARCHAR(250), id INT);"
@@ -27,7 +25,8 @@ CREATE_TABLE_SQL_STRING = (
 SQL_INSERT_STATEMENT = f"INSERT INTO {SNOWFLAKE_SAMPLE_TABLE} VALUES ('name', %(id)s)"
 SQL_LIST = [SQL_INSERT_STATEMENT % {"id": n} for n in range(0, 10)]
 SQL_MULTIPLE_STMTS = "; ".join(SQL_LIST)
-#ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
+
+
 DAG_ID = "beaconfire_dev_db_test"
 # [START howto_operator_snowflake]
 
@@ -74,19 +73,6 @@ with DAG(
     )
 
     # [END howto_operator_snowflake]
-
-    # [START howto_operator_s3_to_snowflake]
-
-    # copy_into_table = S3ToSnowflakeOperator(
-    #     task_id='copy_into_table',
-    #     s3_keys=[S3_FILE_PATH],
-    #     table=SNOWFLAKE_SAMPLE_TABLE,
-    #     schema=SNOWFLAKE_SCHEMA,
-    #     stage=SNOWFLAKE_STAGE,
-    #     file_format="(type = 'CSV',field_delimiter = ';')",
-    # )
-
-    # [END howto_operator_s3_to_snowflake]
 
 
     (
