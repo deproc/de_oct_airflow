@@ -16,7 +16,7 @@ SNOWFLAKE_SCHEMA = 'dev_db'
 SNOWFLAKE_ROLE = 'AW_developer'
 SNOWFLAKE_WAREHOUSE = 'aw_etl'
 SNOWFLAKE_STAGE = 's3_stage_trans_order'
-#S3_FILE_PATH = 'product_order_trans_07152022.csv'
+####S3_FILE_PATH = 'product_order_trans_07152022.csv'
 
 with DAG(
     "s3_data_copy_test",
