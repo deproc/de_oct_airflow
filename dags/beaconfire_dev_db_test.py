@@ -16,7 +16,7 @@ SNOWFLAKE_SCHEMA = 'dev_db'
 SNOWFLAKE_ROLE = 'AW_developer'
 SNOWFLAKE_WAREHOUSE = 'aw_etl'
 SNOWFLAKE_STAGE = 'beaconfire_stage'
- #S3_FILE_PATH = '</path/to/file/sample_file.csv '
+#S3_FILE_PATH = '</path/to/file/sample_file.csv '
 
 SNOWFLAKE_SAMPLE_TABLE = 'airflow_testing'
 
