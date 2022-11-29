@@ -34,6 +34,7 @@ with DAG(
     user_query_rt_rpt = SnowflakeOperator(
        task_id='user_query_rt_rpt',
        sql='./user_query_rt_rpt.sql',
+       split_statements=True,
     )
 
     prestg_last_load_chk >> user_query_rt_rpt       
