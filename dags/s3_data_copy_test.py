@@ -10,18 +10,18 @@ from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeO
 
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-SNOWFLAKE_DATABASE = 'beaconfire'
-SNOWFLAKE_SCHEMA = 'dev_db'
+SNOWFLAKE_DATABASE = 'ETL_AF'
+SNOWFLAKE_SCHEMA = 'DEV_DB'
 
-SNOWFLAKE_ROLE = 'AW_developer'
-SNOWFLAKE_WAREHOUSE = 'aw_etl'
+SNOWFLAKE_ROLE = 'BF_DEVELOPER'
+SNOWFLAKE_WAREHOUSE = 'BF_ETL'
+
 SNOWFLAKE_STAGE = 's3_stage_trans_order'
 #S3_FILE_PATH = 'product_order_trans_07152022.csv'
 
 with DAG(
     "s3_data_copy_test",
-    start_date=datetime(2022, 7, 13),
-    end_date = datetime(2022, 7, 16),
+    start_date=datetime(2022, 11, 28),
     schedule_interval='0 7 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
@@ -40,7 +40,5 @@ with DAG(
     )
 
     copy_into_prestg
-          
-        
-    
+
 
