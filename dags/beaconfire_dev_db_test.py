@@ -14,7 +14,7 @@ SNOWFLAKE_SCHEMA = 'DEV_DB'
 
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-#SNOWFLAKE_STAGE = 'beaconfire_stage'##
+#SNOWFLAKE_STAGE = 'beaconfire_stage'
 
 
 SNOWFLAKE_SAMPLE_TABLE = 'airflow_testing'
@@ -84,7 +84,6 @@ with DAG(
             # copy_into_table,
             snowflake_op_sql_multiple_stmts,
         ]
-        
+
     )
     # [END snowflake_example_dag]
-

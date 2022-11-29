@@ -10,11 +10,11 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeCheckOperat
 
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-SNOWFLAKE_DATABASE = 'beaconfire'
-SNOWFLAKE_SCHEMA = 'prod_db'
+SNOWFLAKE_DATABASE = 'ETL_AF'
+SNOWFLAKE_SCHEMA = 'DEV_DB'
 
-SNOWFLAKE_ROLE = 'AW_developer'
-SNOWFLAKE_WAREHOUSE = 'aw_etl'
+SNOWFLAKE_ROLE = 'BF_DEVELOPER'
+SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 with DAG(
     "user_query_rt_rpt",
@@ -34,8 +34,7 @@ with DAG(
     user_query_rt_rpt = SnowflakeOperator(
        task_id='user_query_rt_rpt',
        sql='./user_query_rt_rpt.sql',
+       split_statements=True,
     )
 
-    prestg_last_load_chk >> user_query_rt_rpt       
-    
-
+    prestg_last_load_chk >> user_query_rt_rpt
