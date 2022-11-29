@@ -1,4 +1,4 @@
-use schema ETL_AF.prod_db;
+use schema ETL_AF.DEV_DB;
 
 create or replace local temp table query_hist as 
 select *
