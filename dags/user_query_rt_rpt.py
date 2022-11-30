@@ -37,6 +37,4 @@ with DAG(
        split_statements=True,
     )
 
-    prestg_last_load_chk >> user_query_rt_rpt       
-    
-
+    prestg_last_load_chk >> user_query_rt_rpt

@@ -84,7 +84,6 @@ with DAG(
             # copy_into_table,
             snowflake_op_sql_multiple_stmts,
         ]
-        
+
     )
     # [END snowflake_example_dag]
-
