@@ -20,7 +20,7 @@ SNOWFLAKE_STAGE = 'S3_AIRFLOW_PROJECT'
 #S3_FILE_PATH = 'product_order_trans_07152022.csv'
 
 with DAG(
-    "IphoneX trans import",
+    "IphoneX_trans_import",
     start_date=datetime(2022, 11, 30),
     schedule_interval='10 18 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
