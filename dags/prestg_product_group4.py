@@ -40,7 +40,7 @@ with DAG(
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='copy_into_prestg',
         s3_keys=['Airflow_Group4_{{ ds[5:7]+ds[8:10]+ds[0:4] }}.csv'],
-        table= 'prestg_product_temp_group4',
+        table= 'prestg_product_group4',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
         file_format='''(type = 'CSV', field_delimiter = ',', SKIP_HEADER = 1 \
@@ -57,24 +57,24 @@ with DAG(
     #     role=SNOWFLAKE_ROLE,
     # )
 
-    user_query_insert = SnowflakeOperator(
-       task_id='product_insert',
-       sql='./product_insert.sql',
-       split_statements=True,
-    )
+    # user_query_insert = SnowflakeOperator(
+    #    task_id='product_insert',
+    #    sql='./product_insert.sql',
+    #    split_statements=True,
+    # )
 
-    user_query_temptable = SnowflakeOperator(
-       task_id='temp_table',
-       sql='./temp_table.sql',
-       split_statements=True,
-    )
+    # user_query_temptable = SnowflakeOperator(
+    #    task_id='temp_table',
+    #    sql='./temp_table.sql',
+    #    split_statements=True,
+    # )
 
     (
-        user_query_temptable 
-        >>
+        # user_query_temptable 
+        # >>
         copy_into_prestg
-        >>
-        user_query_insert
+        # >>
+        # user_query_insert
         
 
     )
