@@ -37,7 +37,7 @@ create_table = (
 with DAG(
         "Project1_Group3_test",
         start_date=datetime(2022, 11, 27),
-        schedule_interval='59 23 * * *',
+        schedule_interval='0 7 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
         catchup=True,
