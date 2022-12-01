@@ -19,7 +19,7 @@ with DAG(
         "project1_group2",
         start_date=datetime(2022, 11, 30),
         # max_active_runs=3,
-        schedule_interval='*/5 * * * *',
+        schedule_interval='*/10 * * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
         catchup=True,
