@@ -27,7 +27,7 @@ SNOWFLAKE_STAGE = 'S3_AIRFLOW_PROJECT' # I use show stage in snowflake to check 
 
 with DAG(
     "s3_data_copy_test_group1",
-    start_date=datetime(2022, 11, 29), # One day before the execution date
+    start_date=datetime(2022, 11, 30), # One day before the execution date
     schedule_interval='0 7 * * *',  # every 7:00 am
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
