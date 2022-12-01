@@ -36,7 +36,7 @@ with DAG(
     snowflake_update_fact = SnowflakeOperator(
         task_id='update_fact_table',
         sql=stock_history_increment,
-        parameters={"cur_date": ds[0:4]+'-'+ds[5:7]+'_'+ds[8:10]},
+        parameters={"cur_date": {{ds[0:4]+'-'+ds[5:7]+'_'+ds[8:10]}}},
         warehouse=SNOWFLAKE_WAREHOUSE,
         database=SNOWFLAKE_DATABASE,
         schema=SNOWFLAKE_SCHEMA,
