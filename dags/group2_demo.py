@@ -13,13 +13,12 @@ SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'DEV_DB'
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-
 SNOWFLAKE_STAGE = 'S3_AIRFLOW_PROJECT'
 
 with DAG(
         "project1_group2",
         start_date=datetime(2022, 11, 30),
-        max_active_runs=3,
+        # max_active_runs=3,
         schedule_interval='*/5 * * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
