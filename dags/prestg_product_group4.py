@@ -69,13 +69,13 @@ with DAG(
     #    split_statements=True,
     # )
 
-    (
+    
         # user_query_temptable 
         # >>
-        copy_into_prestg
+    copy_into_prestg
         # >>
         # user_query_insert
         
 
-    )
+    
 
