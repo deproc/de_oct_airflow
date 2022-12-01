@@ -3,6 +3,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeOperator
+import pendulum
 
 # define snowflake variables
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
@@ -42,11 +43,11 @@ create_table = (
 # define dag
 with DAG(
         "Project1_Group3_Shawn_test",
-        start_date=datetime(2022, 11, 29, tz='US/Eastern'),
-        schedule_interval='0 7 * * *',
-        default_args= {'snowflake_conn_id': SNOWFLAKE_CONN_ID},
-        tags=['beaconfire'],
-        catchup=True,
+        start_date = pendulum.datetime(2022, 11, 29, tz='US/Eastern'),
+        schedule_interval = '0 7 * * *',
+        default_args = {'snowflake_conn_id': SNOWFLAKE_CONN_ID},
+        tags = ['beaconfire'],
+        catchup = True,
 ) as dag:
     # Create the table if does not exist
     snowflake_table_create = SnowflakeOperator(
