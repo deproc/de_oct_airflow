@@ -13,7 +13,7 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project'
 
 # SQL command
-table_name = 'PRESTAGE_USERS_GROUP3'
+table_name = 'PRESTAGE_USERS_GROUP3_test'
 create_table = (
     f"""
     CREATE TABLE IF NOT EXISTS {table_name}(
