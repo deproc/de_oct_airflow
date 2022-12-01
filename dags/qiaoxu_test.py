@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from airflow import DAG
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
@@ -17,8 +18,8 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 
 with DAG(
     "s3_data_copy_test_qiaoxu",
-    start_date=datetime(2022, 11, 30),
-    schedule_interval='00 07 * * *',
+    start_date=pendulum.datetime(2022, 11, 30, tz="EST")
+    schedule_interval='30 22 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
     catchup=True,
