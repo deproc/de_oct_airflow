@@ -11,12 +11,12 @@ SNOWFLAKE_SCHEMA = 'DEV_DB'
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project'
-AIRFLOW_CONN_SNOWFLAKE_DEFAULT = {
-    "conn_type": "snowflake",
-    "conn_id" : SNOWFLAKE_CONN_ID,
-    "login": "dezhangwu",
-    "password": "1029384756Ww",
-}
+# AIRFLOW_CONN_SNOWFLAKE_DEFAULT = {
+#     "conn_type": "snowflake",
+#     "conn_id" : SNOWFLAKE_CONN_ID,
+#     "login": "dezhangwu",
+#     "password": "1029384756Ww",
+# }
 
 # SQL command
 table_name = 'PRESTAGE_USERS_GROUP3'
@@ -32,7 +32,7 @@ create_table = (
   ,Birthday DATE
   ,country VARCHAR()
   ,zipcode VARCHAR()
-  ,gender VARCHAR(6)
+  ,gender VARCHAR(11)
   ,ip_address VARCHAR(15)
   ,create_at TIMESTAMP_NTZ(9)
     );
@@ -42,9 +42,9 @@ create_table = (
 # define dag
 with DAG(
         "Project1_Group3_Shawn_test",
-        start_date=datetime(2022, 11, 27),
-        schedule_interval='59 23 * * *',
-        default_args=AIRFLOW_CONN_SNOWFLAKE_DEFAULT,
+        start_date=datetime(2016, 1, 1, tz="US/Eastern"),
+        schedule_interval='0 0 * * *',
+        default_args= {},
         tags=['beaconfire'],
         catchup=True,
 ) as dag:
