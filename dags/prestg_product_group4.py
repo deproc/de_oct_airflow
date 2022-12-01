@@ -39,7 +39,7 @@ with DAG(
 
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='copy_into_prestg',
-        s3_keys=['Airflow_Group4_{{ ds[5:7]+ds[8:10]+ds[0:4] }}.csv'],
+        s3_keys=['Airflow_Group4_{{ ds[0:4]+ds[5:7]+ds[8:10] }}.csv'],
         table= 'prestg_product_group4',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
