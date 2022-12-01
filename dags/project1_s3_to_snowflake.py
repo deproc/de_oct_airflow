@@ -18,11 +18,11 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 
 with DAG(
     "project1_s3_to_snowflake",
-    start_date=datetime(2022, 11, 30),
+    start_date=datetime(2022, 11, 29),
     schedule_interval='0 7 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
-    #catchup=True,
+    catchup=True,
 ) as dag:
 
     copy_into_prestg = S3ToSnowflakeOperator(
