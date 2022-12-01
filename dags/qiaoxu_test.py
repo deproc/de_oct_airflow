@@ -18,7 +18,7 @@ with DAG(
     end_date=datetime(2022, 12, 2),
     schedule_interval='@daily',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
-    tags=['beaconfire'],
+    tags=['qiaoxu'],
     catchup=True,
 ) as dag:
 
