@@ -15,7 +15,6 @@ AIRFLOW_CONN_SNOWFLAKE_DEFAULT = {
     "conn_type": "snowflake",
     "login": "dezhangwu",
     "password": "1029384756Ww",
-    "schema": "db-schema",
 }
 
 # SQL command
@@ -41,7 +40,7 @@ create_table = (
 
 # define dag
 with DAG(
-        "Project1_Group3_shawn_test",
+        "Project1_Group3_test",
         start_date=datetime(2022, 11, 27),
         schedule_interval='59 23 * * *',
         default_args=AIRFLOW_CONN_SNOWFLAKE_DEFAULT,
