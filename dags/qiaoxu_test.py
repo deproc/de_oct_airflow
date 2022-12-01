@@ -18,6 +18,7 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 with DAG(
     "s3_data_copy_test_qiaoxu",
     start_date=datetime(2022, 11, 30),
+    end_date=datetime(2022, 12, 2),
     schedule_interval='@daily',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
@@ -25,7 +26,7 @@ with DAG(
 ) as dag:
 
     copy_into_prestg = S3ToSnowflakeOperator(
-        task_id='QiaoXuTest_Group1',
+        task_id='prestg_QiaoXu',
         s3_keys=['QiaoXuTest_Group1_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
         table='prestg_QiaoXuTest1_Group1',
         schema=SNOWFLAKE_SCHEMA,
