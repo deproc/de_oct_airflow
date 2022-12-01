@@ -26,9 +26,9 @@ with DAG(
 ) as dag:
 
     copy_into_prestg = S3ToSnowflakeOperator(
-        task_id='prestg_QiaoXuTest_Group1',
+        task_id='prestg_QiaoXuTest_Group11',
         s3_keys=['QiaoXuRest_Group1_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
-        table='prestg_QiaoXuTest_Group1',
+        table='prestg_QiaoXuTest_Group11',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
         file_format='''(type = 'CSV', field_delimiter = ',', SKIP_HEADER = 1 \
