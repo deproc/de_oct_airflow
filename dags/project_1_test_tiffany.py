@@ -38,7 +38,7 @@ create_table = (
 with DAG(
         "Project1_Group3_Tiffany_Test",
         start_date=pendulum.datetime(2022, 11, 29, tz='US/Eastern'),
-        schedule='59 23 * * *',
+        schedule_interval ='59 23 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
         catchup=True,
