@@ -20,7 +20,7 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 # }
 
 # SQL command
-table_name = 'PRESTAGE_USERS_GROUP3'
+table_name = 'PRESTAGE_USERS_Shawn_GROUP3'
 create_table = (
     f"""
     CREATE TABLE IF NOT EXISTS {table_name}(
@@ -50,14 +50,14 @@ with DAG(
         catchup = True,
 ) as dag:
     # Create the table if does not exist
-    snowflake_table_create = SnowflakeOperator(
-        task_id='table_creation',
-        sql=create_table,
-        warehouse=SNOWFLAKE_WAREHOUSE,
-        database=SNOWFLAKE_DATABASE,
-        schema=SNOWFLAKE_SCHEMA,
-        role=SNOWFLAKE_ROLE,
-    )
+    # snowflake_table_create = SnowflakeOperator(
+    #     task_id='table_creation',
+    #     sql=create_table,
+    #     warehouse=SNOWFLAKE_WAREHOUSE,
+    #     database=SNOWFLAKE_DATABASE,
+    #     schema=SNOWFLAKE_SCHEMA,
+    #     role=SNOWFLAKE_ROLE,
+    # )
     snowflake_load_from_S3 = S3ToSnowflakeOperator(
         task_id='table_insert',
         s3_keys=['Users_Group3_{{ ds[0:4]+ds[5:7]+ds[8:10] }}.csv'],
@@ -68,4 +68,5 @@ with DAG(
                 NULL_IF =('NULL','null',''), empty_field_as_null = true, FIELD_OPTIONALLY_ENCLOSED_BY = '\"' \
                 ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
-    snowflake_table_create >> snowflake_load_from_S3
+    # snowflake_table_create >>
+    snowflake_load_from_S3
