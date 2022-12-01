@@ -11,9 +11,6 @@ SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 SNOWFLAKE_STAGE = 's3_airflow_project'
-#S3_FILE_PATH = 'QiaoXuTest_Group1_20221130.csv'
-#S3_FILE_PATH = 'QiaoXuTest_Group1_20221201.csv'
-#S3_FILE_PATH = 'QiaoXuTest_Group1_20221202.csv'
 
 with DAG(
     "s3_data_copy_test_qiaoxu",
@@ -27,7 +24,7 @@ with DAG(
 
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='prestg_QiaoXu',
-        s3_keys=['QiaoXuTest_Group1_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
+        s3_keys=['QiaoXuTest_Group1_{{ ds[0:4]+ds[5:7]+ds[8:10] }}.csv'],
         table='prestg_QiaoXuTest1_Group1',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
