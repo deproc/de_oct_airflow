@@ -30,7 +30,7 @@ with DAG(
 
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='prestg_IphoneX_trans_import',
-        s3_keys=['iphoneX_Group5_{{ ds[5:7]+ds[8:10]+ds[0:4] }}.csv'],
+        s3_keys=['iphoneX_Group5_{{ ds[0:4]+ds[5:7]+ds[8:10] }}.csv'],
         table='PRESTAGE_GY_IPHONEX_GROUP5',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
