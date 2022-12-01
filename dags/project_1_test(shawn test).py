@@ -5,7 +5,7 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeOperator
 
 # define snowflake variables
-SNOWFLAKE_CONN_ID = 'snowflake_default'
+SNOWFLAKE_CONN_ID = 'snowflake_conn'
 SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'DEV_DB'
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
@@ -42,9 +42,9 @@ create_table = (
 # define dag
 with DAG(
         "Project1_Group3_Shawn_test",
-        start_date=datetime(2016, 1, 1, tz="US/Eastern"),
+        start_date=datetime(2022, 11, 27),
         schedule_interval='0 0 * * *',
-        default_args= {},
+        default_args= {'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
         catchup=True,
 ) as dag:
