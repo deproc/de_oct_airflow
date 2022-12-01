@@ -36,7 +36,7 @@ create_table = (
 # define dag
 with DAG(
         "Project1_Group3_test",
-        start_date=datetime(2022, 11, 27),
+        start_date=datetime(2022, 11, 26),
         schedule_interval='59 23 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
