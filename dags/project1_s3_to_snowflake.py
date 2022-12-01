@@ -15,9 +15,6 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 SNOWFLAKE_STAGE = 's3_stage_trans_order' 
 # S3_FILE_PATH = 'iphoneX_Group5_20221130.csv'
-DATES = ['20221130','20221201','20221202']
-
-
 
 with DAG(
     "project1_s3_to_snowflake",
@@ -30,7 +27,7 @@ with DAG(
 
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='prestg_product_order_trans',
-        s3_keys=[f'iphoneX_Group5_{x}.csv' for x in DATES],
+        s3_keys=['iphoneX_Group5_{{ds[0:4]+ds[5:7]+ds[8:10]+}}.csv'],
         table='prestage_iphoneX_Group5', 
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
