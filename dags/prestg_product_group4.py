@@ -38,7 +38,7 @@ with DAG(
 ) as dag:
 
     copy_into_prestg = S3ToSnowflakeOperator(
-        task_id='prestg_product_order_trans_group4',
+        task_id='copy_into_prestg',
         s3_keys=['Airflow_Group4_{{ ds[5:7]+ds[8:10]+ds[0:4] }}.csv'],
         table= 'prestg_product_temp_group4',
         schema=SNOWFLAKE_SCHEMA,
@@ -71,10 +71,11 @@ with DAG(
 
     (
         user_query_temptable 
-        >> [
-        copy_into_prestg,
+        >>
+        copy_into_prestg
+        >>
         user_query_insert
-        ]
+        
 
     )
 
