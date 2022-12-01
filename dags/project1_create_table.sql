@@ -1,4 +1,4 @@
-create or replace table "ETL_AF"."DEV_DB"."PRESTAGE_IPHONEX_GROUP5"(
+create or replace table prestage_iphoneX_Group5(
     order_id int
     ,product varchar(10)
     ,quantity int
