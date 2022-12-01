@@ -30,7 +30,7 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 
 with DAG(
     "PRESTG_PRODUCT_GROUP4",
-    start_date=datetime(2022, 11, 30),
+    start_date=datetime(2022, 11, 29),
     schedule_interval='59 23 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
