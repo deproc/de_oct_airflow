@@ -52,4 +52,4 @@ with DAG(
             ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
 
-    copy_into_prestg
+    snowflake_table_create >> copy_into_prestg
