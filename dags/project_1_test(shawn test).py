@@ -5,7 +5,7 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeOperator
 
 # define snowflake variables
-SNOWFLAKE_CONN_ID = 'dezhangwu'
+SNOWFLAKE_CONN_ID = 'snowflake_conn'
 SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'DEV_DB'
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
@@ -13,6 +13,7 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project'
 AIRFLOW_CONN_SNOWFLAKE_DEFAULT = {
     "conn_type": "snowflake",
+    "conn_id" : SNOWFLAKE_CONN_ID,
     "login": "dezhangwu",
     "password": "1029384756Ww",
 }
