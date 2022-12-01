@@ -26,7 +26,7 @@ create_table = (
   ,Birthday DATE
   ,country VARCHAR()
   ,zipcode VARCHAR()
-  ,gender VARCHAR(6)
+  ,gender VARCHAR(11)
   ,ip_address VARCHAR(15)
   ,create_at TIMESTAMP_NTZ(9)
     );
