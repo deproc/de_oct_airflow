@@ -14,7 +14,7 @@ SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 SNOWFLAKE_STAGE = 's3_stage_trans_order'
-S3_FILE_PATH = 'QiaoXuTest_Group1_20221130.csv'
+#S3_FILE_PATH = 'QiaoXuTest_Group1_20221130.csv'
 
 with DAG(
     "s3_data_copy_test_qiaoxu",
