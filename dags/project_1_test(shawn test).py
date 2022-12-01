@@ -41,7 +41,7 @@ create_table = (
 
 # define dag
 with DAG(
-        "Project1_Group3_test",
+        "Project1_Group3_Shawn_test",
         start_date=datetime(2022, 11, 27),
         schedule_interval='59 23 * * *',
         default_args=AIRFLOW_CONN_SNOWFLAKE_DEFAULT,
