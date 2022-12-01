@@ -18,7 +18,7 @@ table_name = 'PRESTAGE_USERS_GROUP3_RAN'
 
 # define dag
 with DAG(
-        "Project1_Group3",
+        "Project1_Group3_test_ran",
         start_date=pendulum.datetime(2022, 11, 30, tz='US/Eastern'),
         schedule_interval='0 0 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
