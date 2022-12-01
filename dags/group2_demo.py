@@ -17,7 +17,7 @@ SNOWFLAKE_STAGE = 'S3_AIRFLOW_PROJECT'
 
 with DAG(
         "project1_group2",
-        start_date=datetime(2022, 11, 30),
+        start_date=datetime(2022, 11, 29),
         # max_active_runs=3,
         schedule_interval='*/5 * * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
@@ -35,4 +35,4 @@ with DAG(
             ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
 
-copy_into_prestg
+    copy_into_prestg
