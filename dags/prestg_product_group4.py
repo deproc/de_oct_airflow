@@ -45,7 +45,7 @@ with DAG(
         stage=SNOWFLAKE_STAGE,
         file_format='''(type = 'CSV', field_delimiter = ',', SKIP_HEADER = 1 \
             NULL_IF =('NULL','null',''), empty_field_as_null = true, FIELD_OPTIONALLY_ENCLOSED_BY = NONE \
-            ESCAPE_UNENCLOSED_FIELD = NONE, RECORD_DELIMITER = '\n')''',
+            ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
 
     # snowflake_op_sql_str = SnowflakeOperator(
