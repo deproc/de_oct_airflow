@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from airflow import DAG
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
@@ -27,7 +26,7 @@ with DAG(
 
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='QiaoXuTest_Group1',
-        s3_keys=['QiaoXuRest_Group1_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
+        s3_keys=['QiaoXuTest_Group1_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
         table='prestg_QiaoXuTest1_Group1',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
