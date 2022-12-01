@@ -19,7 +19,7 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project'
 
 with DAG(
-    "PRESTG_PRODUCT_GROUP4",
+    "update_stock_history",
     start_date=datetime(2022, 12, 1),
     schedule_interval='0 7 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
