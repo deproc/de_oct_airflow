@@ -18,7 +18,7 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 
 with DAG(
     "s3_data_copy_test_qiaoxu",
-    start_date=datetime(2022, 11, 29),
+    start_date=datetime(2022, 11, 30),
     schedule_interval='0 7 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
