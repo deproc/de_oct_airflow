@@ -13,11 +13,11 @@ SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'DEV_DB'
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-SNOWFLAKE_STAGE = 'S3_AIRFLOW_PROJECT'
+SNOWFLAKE_STAGE = 's3_airflow_project'
 
 with DAG(
         "project1_group2",
-        start_date=datetime(2022, 11, 29),
+        start_date=datetime(2022, 11, 30),
         # max_active_runs=3,
         schedule_interval='*/5 * * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
@@ -25,8 +25,8 @@ with DAG(
         catchup=True,
 ) as dag:
     copy_into_prestg = S3ToSnowflakeOperator(
-        task_id='prestage_sales_group2',
-        s3_keys=['Airflow_Group2_{{ds[5:7]+ds[8:10]+ds[0:4]}}.csv'],
+        task_id='prestage_sales_group2_id',
+        s3_keys=['Airflow_Group2_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
         table='prestage_sales_group2',
         schema=SNOWFLAKE_SCHEMA,
         stage=SNOWFLAKE_STAGE,
