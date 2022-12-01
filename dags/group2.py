@@ -13,14 +13,10 @@ from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeO
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
 SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'DEV_DB'
-CREATE_TABLE_SQL_STRING = (
-    f"CREATE OR REPLACE TRANSIENT TABLE {prestage_sales_group2} (ORDERNUMBER INT, QUANTITYORDERED INT, PRICEEACH FLOAT, SALES FLOAT, ORDERDATE DATETIME, YEAR_ID INT, CUSTOMERNAME VARCHAR, CITY VARCHAR, STATE VARCHAR, COUNTRY VARCHAR);"
-)
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 SNOWFLAKE_STAGE = 'S3_AIRFLOW_PROJECT'
-#S3_FILE_PATH = 'product_order_trans_07152022.csv'
 
 with DAG(
     "s3_data_copy_test",
@@ -31,16 +27,7 @@ with DAG(
     tags=['beaconfire'],
     catchup=True,
 ) as dag:
-    # Create the table if does not exist
-    snowflake_table_create = SnowflakeOperator(
-        task_id='table_creation',
-        sql=CREATE_TABLE_SQL_STRING,
-        warehouse=SNOWFLAKE_WAREHOUSE,
-        database=SNOWFLAKE_DATABASE,
-        schema=SNOWFLAKE_SCHEMA,
-        role=SNOWFLAKE_ROLE,
-        params={"table_name": 'prestage_sales_group2'},
-    )
+    
     copy_into_prestg = S3ToSnowflakeOperator(
         task_id='prestage_sales_group2',
         s3_keys=['Airflow_Group2_{{ ds[5:7]+ds[8:10]+ds[0:4] }}.csv'],
@@ -52,4 +39,4 @@ with DAG(
             ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
 
-    snowflake_table_create >> copy_into_prestg
+   copy_into_prestg
