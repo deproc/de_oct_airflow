@@ -19,7 +19,8 @@ table_name = 'PRESTAGE_USERS_GROUP3'
 # define dag
 with DAG(
         "Project1_Group3",
-        start_date=pendulum.datetime(2022, 11, 29, tz='US/Eastern'),
+        # start_date=pendulum.datetime(2022, 11, 29, tz='US/Eastern'),
+        start_date=pendulum.datetime(2022, 11, 29, tz='UTC'),
         schedule_interval='0 7 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
