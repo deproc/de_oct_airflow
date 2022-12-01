@@ -46,7 +46,6 @@ with DAG(
             ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
 
-=======
 '''
 Most part of this python script is based on the 's3_data_copy_test' file which Aaron and Carina provided for us.
 You can revise as you want.
