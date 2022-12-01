@@ -1,0 +1,5 @@
+use schema ETL_AF.DEV_DB;
+
+insert into ETL_AF.DEV_DB.PRESTG_PRODUCT_GROUP4
+select * from ETL_AF.DEV_DB.PRESTG_PRODUCT_TEMP_GROUP4
+
