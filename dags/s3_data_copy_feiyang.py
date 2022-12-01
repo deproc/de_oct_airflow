@@ -6,7 +6,7 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeOperator
 
 
-SNOWFLAKE_CONN_ID = 'feiyangxue'
+SNOWFLAKE_CONN_ID = 'snowflake_conn'
 SNOWFLAKE_DATABASE = 'ETL_AF'
 SNOWFLAKE_SCHEMA = 'DEV_DB'
 
