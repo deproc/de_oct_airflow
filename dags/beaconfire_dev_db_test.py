@@ -51,7 +51,7 @@ with DAG(
     snowflake_op_with_params = SnowflakeOperator(
         task_id='snowflake_op_with_params',
         sql=SQL_INSERT_STATEMENT,
-        parameters={"id": 5},
+        parameters={"id": 11},
         warehouse=SNOWFLAKE_WAREHOUSE,
         database=SNOWFLAKE_DATABASE,
         schema=SNOWFLAKE_SCHEMA,
