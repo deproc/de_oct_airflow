@@ -14,7 +14,7 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project'
 
 # SQL command
-table_name = 'PRESTAGE_USERS_GROUP3_test'
+table_name = 'PRESTAGE_USERS_GROUP3'
 create_table = (
     f"""
     CREATE TABLE IF NOT EXISTS {table_name}(
@@ -27,7 +27,7 @@ create_table = (
   ,Birthday DATE
   ,country VARCHAR()
   ,zipcode VARCHAR()
-  ,gender VARCHAR(11)
+  ,gender VARCHAR(6)
   ,ip_address VARCHAR(15)
   ,create_at TIMESTAMP_NTZ(9)
     );
@@ -36,9 +36,9 @@ create_table = (
 
 # define dag
 with DAG(
-        "Project1_Group3_test",
-        start_date=pendulum.datetime(2022, 11, 27, tz='US/Eastern'),
-        schedule_interval='0 0 * * *',
+        "Project1_Group3",
+        start_date=pendulum.datetime(2022, 11, 30, tz='US/Eastern'),
+        schedule_interval='59 23 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
         catchup=True,
@@ -62,4 +62,5 @@ with DAG(
                 NULL_IF =('NULL','null',''), empty_field_as_null = true, FIELD_OPTIONALLY_ENCLOSED_BY = '\"' \
                 ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
+
     snowflake_table_create >> snowflake_load_from_S3
