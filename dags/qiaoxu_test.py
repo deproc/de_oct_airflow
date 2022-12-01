@@ -19,7 +19,7 @@ with DAG(
     "s3_data_copy_test_qiaoxu",
     start_date=datetime(2022, 11, 30),
     end_date=datetime(2022, 12, 02),
-    schedule_interval='@daily',
+    schedule_interval='00 07 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
     catchup=True,
