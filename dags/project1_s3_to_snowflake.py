@@ -13,7 +13,7 @@ SNOWFLAKE_SCHEMA = 'DEV_DB'
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
-SNOWFLAKE_STAGE = 's3_stage_trans_order' 
+SNOWFLAKE_STAGE = 's3_airflow_project' 
 # S3_FILE_PATH = 'iphoneX_Group5_20221130.csv'
 
 with DAG(
