@@ -61,9 +61,4 @@ with DAG(
                 NULL_IF =('NULL','null',''), empty_field_as_null = true, FIELD_OPTIONALLY_ENCLOSED_BY = '\"' \
                 ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
-    (
-        snowflake_table_create
-        >> [
-            snowflake_load_from_S3
-        ]
-    )
+    snowflake_table_create >> snowflake_load_from_S3
