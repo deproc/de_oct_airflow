@@ -19,7 +19,7 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 with DAG(
     "project1_s3_to_snowflake",
     start_date=datetime(2022, 11, 29),
-    schedule_interval='0 7 * * *',
+    schedule_interval='30 6 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
     catchup=True,
