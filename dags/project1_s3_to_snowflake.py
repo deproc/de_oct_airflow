@@ -36,10 +36,6 @@ with DAG(
             ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     )
 
-    project1_create_table = SnowflakeOperator(
-       task_id='project1_create_table',
-       sql='project1_create_table.sql',
-       split_statements=False, # there is only one statement, no need to split
-    )
+    
 
-    project1_create_table >> copy_into_prestg
+    copy_into_prestg
