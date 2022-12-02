@@ -52,4 +52,4 @@ with DAG(
     #    split_statements=True,
     # )
 
-    copy_into_prestg
+    update_dim_tables
