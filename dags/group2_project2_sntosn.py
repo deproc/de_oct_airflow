@@ -20,7 +20,7 @@ SNOWFLAKE_TARGET_FACT_TABLE = 'fact_stock_history_group2'
 SNOWFLAKE_TARGET_DIM_TABLE = 'dim_company_profile_group2'
 
 with DAG(
-        "project1_group2",
+        "project2_group2",
         start_date = datetime(2022, 11, 30),
         schedule_interval = '*/30 * * * *',
         default_args = {'snowflake_conn_id': SNOWFLAKE_CONN_ID},
@@ -29,7 +29,7 @@ with DAG(
 ) as dag:
     snowflake_update_fact = SnowflakeOperator(
         task_id='snfk_update_fact',
-        sql = './FACT_STOCK_HISTORY_GROUP2.sql', # query to update fact table
+        sql = 'FACT_STOCK_HISTORY_GROUP2.sql', # query to update fact table
         table = SNOWFLAKE_TARGET_FACT_TABLE,
         schema = SNOWFLAKE_TARGET_SCHEMA,
         database = SNOWFLAKE_TARGET_DATABASE,
@@ -39,7 +39,7 @@ with DAG(
 
     snowflake_update_dim = SnowflakeOperator(
         task_id = 'snfk_update_dim',
-        sql = './group2_project2_company_profile.sql', # query to update dim table
+        sql = 'group2_project2_company_profile.sql', # query to update dim table
         table = SNOWFLAKE_TARGET_DIM_TABLE,
         schema = SNOWFLAKE_TARGET_SCHEMA,
         database = SNOWFLAKE_TARGET_DATABASE,
