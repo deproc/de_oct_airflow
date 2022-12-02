@@ -16,9 +16,13 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project' 
 # S3_FILE_PATH = 'iphoneX_Group5_20221130.csv'
 
-DIM_FILE_PATH = 'dim_company_profile_group5'
-UPDATE_DIM_TABLE_SQL = '''create or replace table "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"
-                        clone US_STOCKS_DAILY.PUBLIC.COMPANY_PROFILE;'''
+
+UPDATE_DIM_TABLE_SQL =  '''
+                        truncate table "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5";
+
+                        insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"
+                        select * from  US_STOCKS_DAILY.PUBLIC.COMPANY_PROFILE;
+                        '''
 
 with DAG(
     "project2_snowflake_to_snowflake",
@@ -44,8 +48,6 @@ with DAG(
         task_id='update_dim_tables',
         sql=UPDATE_DIM_TABLE_SQL,
         warehouse=SNOWFLAKE_WAREHOUSE,
-        database=SNOWFLAKE_DATABASE,
-        schema=SNOWFLAKE_SCHEMA,
         role=SNOWFLAKE_ROLE
     )
 
