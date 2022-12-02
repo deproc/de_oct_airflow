@@ -16,7 +16,8 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 SNOWFLAKE_STAGE = 's3_airflow_project' 
 # S3_FILE_PATH = 'iphoneX_Group5_20221130.csv'
 
-UPDATE_DIM_TABLE_SQL = '''create or replace dim_company_profile_group5 
+DIM_FILE_PATH = 'dim_company_profile_group5'
+UPDATE_DIM_TABLE_SQL = f'''create or replace {DIM_FILE_PATH} 
                         clone US_STOCKS_DAILY.PUBLIC.COMPANY_PROFILE;'''
 
 with DAG(
