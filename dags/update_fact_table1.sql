@@ -24,7 +24,7 @@ select
   a1.ID , a1.SYMBOL , a1.PRICE ,a1.BETA ,a1.VOLAVG ,a1.MKTCAP ,a1.LASTDIV ,a1.RANGE, a1.CHANGES,a1.COMPANYNAME
  ,a1.EXCHANGE ,a1.INDUSTRY,a1.WEBSITE,a1.DESCRIPTION,a1.CEO,a1.SECTOR ,a1.DCFDIFF,a1.DCF
 
-from "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP4_test" a1
+from US_STOCKS_DAILY.PUBLIC.Company_Profile a1
 join "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP4" a2
 on a1.symbol = a2.symbol) as b
 on (a.ID = b.ID  and a.SYMBOL= b.SYMBOL)
@@ -48,3 +48,6 @@ create or replace table  "ETL_AF"."DEV_DB"."DIM_SYMBOLS_GROUP4"  as
 select  id, symbol, name, exchange, row_number() over(partition by symbol order by id) as symbol_id 
 from "US_STOCKS_DAILY"."PUBLIC"."SYMBOLS"
 
+--insert method
+insert into ETL_AF.DEV_DB.fact_Stock_History_Group4 
+select * from US_STOCKS_DAILY.PUBLIC.Stock_History
