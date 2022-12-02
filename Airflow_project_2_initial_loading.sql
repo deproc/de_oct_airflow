@@ -1,5 +1,6 @@
 #project_2:
 #initial data load
+-- load data from source table into dim table
 insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"(
     id
     ,symbol
@@ -24,6 +25,7 @@ select
     *
 from "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE";
 
+-- load data from source table into fact table
 insert into "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5"
 select
     c.id
