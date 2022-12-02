@@ -20,7 +20,7 @@ insert into "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5"
 with cte as(
     select * from "US_STOCKS_DAILY"."PUBLIC"."STOCK_HISTORY"
     --only insert rows with date > the most recent date in target file
-    where date > (select max(date) 
+    where date > (select ifnull(max(date),'1970-01-01') --if null, then append all data from 1970
                 from "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5")
 )
 select a.id, b.date, b.open, b.high, b.low, b.close, b.volume, b.adjclose
