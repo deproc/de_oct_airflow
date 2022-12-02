@@ -21,7 +21,7 @@ SELECT C.ID, S.DATE,S.OPEN, S.HIGH, S.LOW, S.CLOSE, S.VOLUME, S.ADJCLOSE
 FROM "US_STOCKS_DAILY"."PUBLIC"."STOCK_HISTORY" s
     LEFT JOIN "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE" c 
         ON C.SYMBOL = S.SYMBOL 
-WHERE DATE = DATEADD(DAY, 3, DATEADD(MONTH, -1, CURRENT_DATE()));
+WHERE DATE = DATEADD(DAY, 2, DATEADD(MONTH, -1, CURRENT_DATE()));
 '''
 # SQL updating DIM table commands
 SQL_UPDATE_COMPANY_PROFILE = '''
@@ -33,8 +33,8 @@ DAG_ID = "Airflow_project_2_Group5"
 # [START howto_operator_snowflake]
 with DAG(
         DAG_ID,
-        start_date=datetime(2022, 11 , 4),
-        schedule_interval='15 6 * * *',
+        start_date=datetime(2022, 12 , 2),
+        schedule_interval='00 14 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
         catchup=True,
