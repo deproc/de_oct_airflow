@@ -25,7 +25,7 @@ with DAG(
     schedule_interval='30 6 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
-    catchup=True,
+    catchup=False,
 ) as dag:
 
     # copy_into_prestg = S3ToSnowflakeOperator(
