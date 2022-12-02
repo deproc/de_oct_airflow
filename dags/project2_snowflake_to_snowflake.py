@@ -48,7 +48,8 @@ with DAG(
         task_id='update_dim_tables',
         sql=UPDATE_DIM_TABLE_SQL,
         warehouse=SNOWFLAKE_WAREHOUSE,
-        role=SNOWFLAKE_ROLE
+        role=SNOWFLAKE_ROLE,
+        split_statements=True
     )
 
     # update_fact_table = SnowflakeOperator(
