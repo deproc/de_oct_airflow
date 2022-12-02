@@ -20,9 +20,9 @@ table_name = 'PRESTAGE_USERS_GROUP3'
 with DAG(
         "Project1_Group3",
         start_date=pendulum.datetime(2022, 11, 30, tz='US/Eastern'),
-        schedule_interval='0 7 * * *',
+        schedule_interval='0 0 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
-        tags=['beaconfire'],
+        tags=['GROUP3'],
         catchup=True,
 ) as dag:
     # Create the table if does not exist
