@@ -6,48 +6,11 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 # declaring varibles:
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-
 SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-# SNOWFLAKE_STAGE = 'beaconfire_stage'
-
-# SNOWFLAKE_FACT_TABLE = 'FACT_STOCK_HISTORY_GROUP5'
-# SNOWFLAKE_DIM_TABLE = 'DIM_COMPANY_PROFILE_GROUP5'
-
-#SQL updating fact table commands
-SQL_UPDATE_FACT = '''
-CREATE OR REPLACE TEMPORARY TABLE "ETL_AF"."DEV_DB"."UPDATED_RECORDS_GROUP5" AS
-SELECT *
-FROM "US_STOCKS_DAILY"."PUBLIC"."STOCK_HISTORY"
-EXCEPT
-SELECT *
-FROM "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5";
-MERGE INTO "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5" T
-USING "ETL_AF"."DEV_DB"."UPDATED_RECORDS_GROUP5" S
-ON T.ID = S.ID
-WHEN MATCHED THEN UPDATE SET T.DESCRIPTION = S.DESCRIPTION;
-'''
-
-SQL_INSERT_TO_FACT = '''
-INSERT INTO "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5" 
-WITH CTE AS
-(
-    SELECT * 
-    FROM "US_STOCKS_DAILY"."PUBLIC"."STOCK_HISTORY" s
-    WHERE DATE > (SELECT MAX(DATE) FROM "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5"
-)
-SELECT C.ID, S.DATE,S.OPEN, S.HIGH, S.LOW, S.CLOSE, S.VOLUME, S.ADJCLOSE
-FROM CTE s
-    LEFT JOIN "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE" c 
-        ON C.SYMBOL = S.SYMBOL;
-'''
-# SQL updating DIM table commands
-SQL_UPDATE_COMPANY_PROFILE = '''
-CREATE OR REPLACE TABLE "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5" AS 
-SELECT * FROM "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE";
-'''
 
 DAG_ID = "Airflow_project_2_Group5"
+
 # [START howto_operator_snowflake]
 with DAG(
         DAG_ID,
@@ -57,24 +20,14 @@ with DAG(
         tags=['beaconfire'],
         catchup=True,
 ) as dag:
-    # [START snowflake_example_dag]
-    snowflake_update_FACT_table = SnowflakeOperator(
+    # [START snowflake_dag]
+    snowflake_update_DIM_and_FACT_tables = SnowflakeOperator(
         task_id='snowflake_update_FACT_table',
-        sql=SQL_INSERT_TO_FACT,
+        sql='Airflow_Project_2_ETL.sql',
         warehouse=SNOWFLAKE_WAREHOUSE,
-#         database=SNOWFLAKE_DATABASE_TARGET,
-#         schema=SNOWFLAKE_SCHEMA_TARGET,
         role=SNOWFLAKE_ROLE,
+        split = Ture,
     )
 
-    snowflake_update_DIM_table = SnowflakeOperator(
-        task_id='snowflake_update_DIM_table',
-        sql=SQL_UPDATE_COMPANY_PROFILE,
-        # parameters={"id": 5},
-        warehouse=SNOWFLAKE_WAREHOUSE,
-        # database=SNOWFLAKE_DATABASE,
-        # schema=SNOWFLAKE_SCHEMA,
-        role=SNOWFLAKE_ROLE,
-    )
 
-    snowflake_update_DIM_table >> snowflake_update_FACT_table
+    snowflake_update_DIM_and_FACT_tables
