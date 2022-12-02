@@ -6,9 +6,6 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 # declaring varibles:
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-SNOWFLAKE_ROLE = 'BF_DEVELOPER'
-SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-
 DAG_ID = "Airflow_project_2_Group5"
 
 # [START howto_operator_snowflake]
@@ -21,13 +18,13 @@ with DAG(
         catchup=True,
 ) as dag:
     # [START snowflake_dag]
-    snowflake_update_DIM_and_FACT_tables = SnowflakeOperator(
-        task_id='snowflake_update_FACT_table',
+    snowflake_update_target_tables = SnowflakeOperator(
+        task_id='update_target_tables',
         sql='Airflow_Project_2_ETL.sql',
         warehouse=SNOWFLAKE_WAREHOUSE,
         role=SNOWFLAKE_ROLE,
-        split = Ture,
+        split = True,
     )
 
 
-    snowflake_update_DIM_and_FACT_tables
+    snowflake_update_target_tables
