@@ -33,7 +33,7 @@ FROM "US_STOCKS_DAILY"."PUBLIC"."STOCK_HISTORY" s
 WHERE DATE = {DATE_PARAMETER}
 '''
 # SQL updating DIM table commands
-SQL_UPDATE_COMPANY_PROFILE = 'CREATE OR REPLACE "DIM_COMPANY_PROFILE_GROUP5" CLONE "COMPANY_PROFILE"'
+SQL_UPDATE_COMPANY_PROFILE = f'CREATE OR REPLACE {SNOWFLAKE_DIM_TABLE} CLONE {SNOWFLAKE_COMPANY_PROFILE}'
 
 DAG_ID = "Airflow_project_2_Group5"
 # [START howto_operator_snowflake]
@@ -50,8 +50,8 @@ with DAG(
         task_id='snowflake_update_FACT_table',
         sql=SQL_INSERT_TO_FACT,
         warehouse=SNOWFLAKE_WAREHOUSE,
-        # database=SNOWFLAKE_DATABASE,
-        # schema=SNOWFLAKE_SCHEMA,
+        database=SNOWFLAKE_DATABASE_TARGET,
+        schema=SNOWFLAKE_SCHEMA_TARGET,
         role=SNOWFLAKE_ROLE,
     )
 
