@@ -1,3 +1,0 @@
-insert into "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5"
-select * 
-from "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE";
