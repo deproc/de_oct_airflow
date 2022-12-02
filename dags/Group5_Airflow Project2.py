@@ -21,7 +21,7 @@ with DAG(
     snowflake_update_target_tables = SnowflakeOperator(
         task_id='update_target_tables',
         sql='Airflow_Project_2_ETL.sql',
-        split = True,
+        split_statements = True,
     )
 
 
