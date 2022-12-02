@@ -30,7 +30,7 @@ with DAG(
     snowflake_update_fact = SnowflakeOperator(
         task_id='snfk_update_fact',
         sql = 'FACT_STOCK_HISTORY_GROUP2.sql', # query to update fact table
-        table = SNOWFLAKE_TARGET_FACT_TABLE,
+        # table = SNOWFLAKE_TARGET_FACT_TABLE,
         schema = SNOWFLAKE_TARGET_SCHEMA,
         database = SNOWFLAKE_TARGET_DATABASE,
         warehouse = SNOWFLAKE_WAREHOUSE,
@@ -40,7 +40,7 @@ with DAG(
     snowflake_update_dim = SnowflakeOperator(
         task_id = 'snfk_update_dim',
         sql = 'group2_project2_company_profile.sql', # query to update dim table
-        table = SNOWFLAKE_TARGET_DIM_TABLE,
+        # table = SNOWFLAKE_TARGET_DIM_TABLE,
         schema = SNOWFLAKE_TARGET_SCHEMA,
         database = SNOWFLAKE_TARGET_DATABASE,
         warehouse = SNOWFLAKE_WAREHOUSE,
