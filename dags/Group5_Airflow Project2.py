@@ -40,7 +40,7 @@ with DAG(
         schedule_interval='12 14 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
-        catchup=False,
+        catchup=True,
 ) as dag:
     # [START snowflake_example_dag]
     snowflake_update_FACT_table = SnowflakeOperator(
