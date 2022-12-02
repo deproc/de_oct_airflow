@@ -14,7 +14,7 @@
 insert into "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP4" 
 select a1.id, a1.symbol, a1.date, a1.open, a1.high, a1.low, a1.close, a1.volume, a1.adjclose
 from  US_STOCKS_DAILY.PUBLIC.Stock_History a1
-where current_date()=date
+where current_date()=date;
 
 
 merge into ETL_AF.DEV_DB.DIM_COMPANY_PROFILE_GROUP4 as a
