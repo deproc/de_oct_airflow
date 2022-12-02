@@ -1,4 +1,40 @@
 #project_2:
+--create dim table
+create or replace table dim_company_profile_group5(
+    id int primary key
+    ,symbol varchar
+    ,price float
+    ,beta float
+    ,volavg int
+    ,mktcap int
+    ,lastdiv float
+    ,range varchar
+    ,changes float
+    ,companyname varchar
+    ,exchange varchar
+    ,industry varchar
+    ,website varchar
+    ,description varchar
+    ,ceo varchar
+    ,sector varchar
+    ,dcfdiff float
+    ,dcf float
+);
+
+--create fact table
+create or replace table fact_stock_history_group5(
+    company_id int
+    ,date date
+    ,open float
+    ,high float
+    ,low float
+    ,close float
+    ,volume float
+    ,adjclose float
+    ,primary key (company_id, date)
+    ,foreign key (company_id) references dim_company_profile_group5(id)
+);
+
 #initial data load
 -- load data from source table into dim table
 insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"(
