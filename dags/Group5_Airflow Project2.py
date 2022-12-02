@@ -7,8 +7,8 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
 
-# SNOWFLAKE_ROLE = 'BF_DEVELOPER'
-# SNOWFLAKE_WAREHOUSE = 'BF_ETL'
+SNOWFLAKE_ROLE = 'BF_DEVELOPER'
+SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 # SNOWFLAKE_STAGE = 'beaconfire_stage'
 
 # SNOWFLAKE_FACT_TABLE = 'FACT_STOCK_HISTORY_GROUP5'
