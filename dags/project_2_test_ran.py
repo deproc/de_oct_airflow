@@ -13,8 +13,8 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 with DAG(
     'Project2_Group3_test_ran',
-    start_date=pendulum.datetime(2012, 6, 1, tz='US/Eastern'),
-    end_date = pendulum.datetime(2012, 6, 5, tz='US/Eastern'),
+    start_date=pendulum.datetime(2022, 11, 1, tz='US/Eastern'),
+    end_date = pendulum.datetime(2012, 11, 4, tz='US/Eastern'),
     schedule_interval='0 0 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['GROUP3'],
