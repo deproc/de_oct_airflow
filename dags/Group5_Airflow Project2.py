@@ -32,12 +32,8 @@ WHERE DATE = {DATE_PARAMETER}
 # SQL updating DIM table commands
 SQL_UPDATE_COMPANY_PROFILE = f'CREATE OR REPLACE "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5" CLONE "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE"'
 
-# use except to find the updated and new data
-
-
 DAG_ID = "Airflow_project_2_Group5"
 # [START howto_operator_snowflake]
-
 with DAG(
         DAG_ID,
         start_date=datetime(2022, 11 , 4),
