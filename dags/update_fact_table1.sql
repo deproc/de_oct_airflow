@@ -49,5 +49,5 @@ select  id, symbol, name, exchange, row_number() over(order by id) as symbol_id
 from "US_STOCKS_DAILY"."PUBLIC"."SYMBOLS"
 
 --insert method
-insert into ETL_AF.DEV_DB.fact_Stock_History_Group4 
-select * from US_STOCKS_DAILY.PUBLIC.Stock_History
+--insert into ETL_AF.DEV_DB.fact_Stock_History_Group4 
+--select * from US_STOCKS_DAILY.PUBLIC.Stock_History
