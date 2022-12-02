@@ -33,7 +33,7 @@ DAG_ID = "Airflow_project_2_Group5"
 # [START howto_operator_snowflake]
 with DAG(
         DAG_ID,
-        start_date=datetime(2022, 12 , 2),
+        start_date=datetime(2022, 12 , 1),
         schedule_interval='00 14 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags=['beaconfire'],
