@@ -14,20 +14,12 @@ SNOWFLAKE_ROLE = 'BF_DEVELOPER'
 SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 SNOWFLAKE_STAGE = 's3_airflow_project' 
-# S3_FILE_PATH = 'iphoneX_Group5_20221130.csv'
 
-
-UPDATE_DIM_TABLE_SQL =  '''
-                        truncate table "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5";
-
-                        insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"
-                        select * from  US_STOCKS_DAILY.PUBLIC.COMPANY_PROFILE;
-                        '''
 
 with DAG(
     "project2_snowflake_to_snowflake",
-    start_date=datetime(2022, 11, 29),
-    schedule_interval='30 6 * * *',
+    start_date=datetime(2022, 12, 1),
+    schedule_interval='10 7 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
     catchup=False,
@@ -44,18 +36,10 @@ with DAG(
     #         ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
     # )
 
-    update_dim_tables = SnowflakeOperator(
-        task_id='update_dim_tables',
-        sql=UPDATE_DIM_TABLE_SQL,
-        warehouse=SNOWFLAKE_WAREHOUSE,
-        role=SNOWFLAKE_ROLE,
-        split_statements=True
+    update_tables = SnowflakeOperator(
+        task_id='update_tables',
+        sql='update_tables.sql',
+        split_statements=True,
     )
 
-    # update_fact_table = SnowflakeOperator(
-    #    task_id='update_fact_table',
-    #    sql='update_fact_table.sql',
-    #    split_statements=True,
-    # )
-
-    update_dim_tables
+    update_tables
