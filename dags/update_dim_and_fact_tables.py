@@ -15,8 +15,8 @@ SNOWFLAKE_WAREHOUSE = 'BF_ETL'
 
 with DAG(
     "update_dim_and_fact_tables",
-    start_date=datetime(2022, 12, 1, tz = 'EST'),
-    schedule_interval='0 21 * * *',
+    start_date=datetime(2022, 12, 1),
+    schedule_interval='0 2 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
     catchup=False,
