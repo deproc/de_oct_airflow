@@ -21,7 +21,7 @@ SNOWFLAKE_TARGET_DIM_TABLE = 'dim_company_profile_group2'
 
 with DAG(
         "project2_group2",
-        start_date = datetime(2022, 11, 30),
+        start_date = datetime(2022, 12, 1),
         schedule_interval = '* 7 * * *',
         default_args = {'snowflake_conn_id': SNOWFLAKE_CONN_ID},
         tags = ['beaconfire'],
