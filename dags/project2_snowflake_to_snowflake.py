@@ -7,14 +7,6 @@ from airflow.providers.snowflake.transfers.s3_to_snowflake import S3ToSnowflakeO
 
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-SNOWFLAKE_DATABASE = 'ETL_AF'
-SNOWFLAKE_SCHEMA= 'DEV_DB'
-
-SNOWFLAKE_ROLE = 'BF_DEVELOPER'
-SNOWFLAKE_WAREHOUSE = 'BF_ETL'
-
-SNOWFLAKE_STAGE = 's3_airflow_project' 
-
 
 with DAG(
     "project2_snowflake_to_snowflake",
@@ -24,17 +16,6 @@ with DAG(
     tags=['beaconfire'],
     catchup=False,
 ) as dag:
-
-    # copy_into_prestg = S3ToSnowflakeOperator(
-    #     task_id='prestg_product_order_trans',
-    #     s3_keys=['iphoneX_Group5_{{ds[0:4]+ds[5:7]+ds[8:10]}}.csv'],
-    #     table='prestage_iphoneX_Group5', 
-    #     schema=SNOWFLAKE_SCHEMA,
-    #     stage=SNOWFLAKE_STAGE,
-    #     file_format='''(type = 'CSV', field_delimiter = ',', SKIP_HEADER = 1 \
-    #         NULL_IF =('NULL','null',''), empty_field_as_null = true, FIELD_OPTIONALLY_ENCLOSED_BY = '\"' \
-    #         ESCAPE_UNENCLOSED_FIELD = NONE RECORD_DELIMITER = '\n')''',
-    # )
 
     update_tables = SnowflakeOperator(
         task_id='update_tables',
