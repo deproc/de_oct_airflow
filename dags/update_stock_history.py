@@ -49,7 +49,7 @@ with DAG(
 
     user_query_insert = SnowflakeOperator(
        task_id='insert_into_fact',
-       sql='./update_fact_table.sql',
+       sql='./update_fact_table1.sql',
        split_statements=True,
     )
 
