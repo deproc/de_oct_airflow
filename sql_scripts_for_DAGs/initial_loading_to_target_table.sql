@@ -37,26 +37,7 @@ create or replace table fact_stock_history_group5(
 
 #initial data load
 -- load data from source table into dim table
-insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"(
-    id
-    ,symbol
-    ,price
-    ,beta
-    ,volavg
-    ,mktcap
-    ,lastdiv
-    ,range
-    ,changes
-    ,companyname
-    ,exchange
-    ,industry
-    ,website
-    ,description
-    ,ceo
-    ,sector
-    ,dcfdiff
-    ,dcf
-)
+insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"
 select
     *
 from "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE";
