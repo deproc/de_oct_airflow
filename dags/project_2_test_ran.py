@@ -17,12 +17,13 @@ stock_history_increment = f"""
 INSERT INTO {stock_table_name} (symbol_id, date, open, high, low, close, volume, adjclose)
 select MD5_NUMBER_LOWER64(symbol), date, open, high, low, close, volume, adjclose
 FROM "US_STOCKS_DAILY"."PUBLIC"."STOCK_HISTORY"
-where date = %(cur_date)
+where date = '{{ds}}'
 """
 
 with DAG(
     'Project2_Group3_test_ran',
-    start_date=pendulum.datetime(2022, 11, 4, tz='US/Eastern'),
+    start_date=pendulum.datetime(2022, 11, 1, tz='US/Eastern'),
+    end_date = pendulum.datetime(2022, 11, 5, tz='US/Eastern'),
     schedule_interval='0 0 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['GROUP3'],
@@ -36,7 +37,6 @@ with DAG(
     snowflake_update_fact = SnowflakeOperator(
         task_id='update_fact_table',
         sql=stock_history_increment,
-        parameters={"cur_date": '{{ds[0:4]}}'+'-'+'{{ds[5:7]}}'+'_'+'{{ds[8:10]}}'},
         warehouse=SNOWFLAKE_WAREHOUSE,
         database=SNOWFLAKE_DATABASE,
         schema=SNOWFLAKE_SCHEMA,
