@@ -45,7 +45,7 @@ values (b.ID , b.SYMBOL , b.PRICE , b.BETA , b.VOLAVG , b.MKTCAP , b.LASTDIV ,  
        , b.EXCHANGE , b.INDUSTRY, b.WEBSITE, b.DESCRIPTION, b.CEO, b.SECTOR , b.DCFDIFF, b.DCF);
 
 create or replace table  "ETL_AF"."DEV_DB"."DIM_SYMBOLS_GROUP4"  as
-select  id, symbol, name, exchange, row_number() over(partition by symbol order by id) as symbol_id 
+select  id, symbol, name, exchange, row_number() over(order by id) as symbol_id 
 from "US_STOCKS_DAILY"."PUBLIC"."SYMBOLS"
 
 --insert method
