@@ -20,7 +20,7 @@ SNOWFLAKE_TARGET_FACT_TABLE = 'fact_stock_history_group2'
 SNOWFLAKE_TARGET_DIM_TABLE = 'dim_company_profile_group2'
 
 with DAG(
-        "project1_group2",
+        "project2_group2",
         start_date = datetime(2022, 11, 30),
         schedule_interval = '*/30 * * * *',
         default_args = {'snowflake_conn_id': SNOWFLAKE_CONN_ID},
