@@ -22,7 +22,7 @@ SELECT
 FROM FACT_STOCK_GROUP1;
 
 -- Use merge to insert new data or update the old data
-MERGE FACT_STOCK_GROUP1 t
+MERGE INTO FACT_STOCK_GROUP1 t
 USING TEMP s
 ON t.symbol_id = s.symbol_id AND t.company_id = s.company_id AND t.date = s.date
 WHEN MATCHED THEN UPDATE SET t.open = s.open, t.high = s.high, t.low = s.low, t.close = s.close, t.volume = s.volume, t.adjclose = s.adjclose
