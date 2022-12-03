@@ -11,7 +11,7 @@ SNOWFLAKE_CONN_ID = 'snowflake_conn'
 with DAG(
     "project2_snowflake_to_snowflake_group5",
     start_date=datetime(2022, 12, 1),
-    schedule_interval='27 7 * * *',
+    schedule_interval='8 3 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
     tags=['beaconfire'],
     catchup=False,
