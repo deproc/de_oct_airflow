@@ -6,7 +6,7 @@ from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 # declaring varibles:
 
 SNOWFLAKE_CONN_ID = 'snowflake_conn'
-DAG_ID = "Airflow_project_2_Group5"
+DAG_ID = "Airflow_project_2"
 
 # [START howto_operator_snowflake]
 with DAG(
@@ -14,7 +14,7 @@ with DAG(
         start_date=datetime(2022, 12 , 1),
         schedule_interval='00 14 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
-        tags=['beaconfire'],
+        tags=['beaconfire']['test'],
         catchup=True,
 ) as dag:
     # [START snowflake_dag]
