@@ -39,7 +39,7 @@ with DAG(
 
     snowflake_update_dim = SnowflakeOperator(
         task_id = 'snfk_update_dim',
-        sql = 'group2_project2_company_profile.sql', # query to update dim table
+        sql = 'DIM_COMPANY_PROFILE_GROUP2.sql', # query to update dim table
         # table = SNOWFLAKE_TARGET_DIM_TABLE,
         schema = SNOWFLAKE_TARGET_SCHEMA,
         database = SNOWFLAKE_TARGET_DATABASE,
