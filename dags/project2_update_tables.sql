@@ -4,10 +4,11 @@
 
 -- Option1: we simply copy all data from src file to target everyday
 -- First truncate the target table
--- truncate table "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5";
+-- truncate table "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"
+
 -- Then, insert all data from src table to target table
 -- insert into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5"
--- select * from  US_STOCKS_DAILY.PUBLIC.COMPANY_PROFILE;
+-- select * from  US_STOCKS_DAILY.PUBLIC.COMPANY_PROFILE
 
 -- Option2: merge the data in both src and target tables
 -- If we only use merge, we will need to update all the existing rows.
@@ -62,7 +63,7 @@ on a.symbol = b.symbol;
 -- select * from "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE"
 -- except 
 -- select $2,$3,$2,$3,$2,$3,$2,$3,$2,$3,$2,$3
--- from "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5";
+-- from "ETL_AF"."DEV_DB"."FACT_STOCK_HISTORY_GROUP5"
 
 -- --then, we merge the temp table into our target using merge
 -- merge into "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5" a
@@ -75,6 +76,6 @@ on a.symbol = b.symbol;
 --     a.$14=b.$14, a.$15= b.$15, a.$16=b.$16, a.$17= b.$17, a.$18= b.$18
 -- when not matched then insert
 --     values (b.$1,b.$2,b.$3,b.$4,b.$5,b.$6,b.$7,b.$8,b.$9,b.$10,
---             b.$11,b.$12,b.$13,b.$14,b.$15,b.$16,b.$17,b.$18);
+--             b.$11,b.$12,b.$13,b.$14,b.$15,b.$16,b.$17,b.$18)
 
 
