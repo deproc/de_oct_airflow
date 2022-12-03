@@ -17,7 +17,7 @@ SNOWFLAKE_STAGE = 's3_airflow_project'
 # S3_FILE_PATH = 'iphoneX_Group5_20221130.csv'
 
 with DAG(
-    "project1_s3_to_snowflake",
+    "project1_s3_to_snowflake_group5",
     start_date=datetime(2022, 11, 29),
     schedule_interval='30 6 * * *',
     default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
