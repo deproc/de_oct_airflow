@@ -1,0 +1,2 @@
+Used symbol as the primary key in company profile table since there is no data for ID be stored in the stock history table.
+The company profile.symbol refers to the stock history.symbol.
