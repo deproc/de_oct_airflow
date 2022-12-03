@@ -4,6 +4,7 @@ CREATE OR REPLACE TEMPORARY TABLE TEMP AS
 SELECT
     sym.id AS symbol_id
     ,c.id AS company_id
+    ,s.symbol
     ,s.date
     ,s.open
     ,s.high
