@@ -14,7 +14,7 @@ with DAG(
         start_date=datetime(2022, 12 , 1),
         schedule_interval='00 14 * * *',
         default_args={'snowflake_conn_id': SNOWFLAKE_CONN_ID},
-        tags=['beaconfire']['test'],
+        tags=['beaconfire'],
         catchup=True,
 ) as dag:
     # [START snowflake_dag]
