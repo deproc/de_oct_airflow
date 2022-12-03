@@ -19,7 +19,7 @@ with DAG(
 
     update_tables = SnowflakeOperator(
         task_id='update_tables',
-        sql='project2_update_tables.sql',
+        sql='project2_update_tables_group5.sql',
         split_statements=True,
     )
 
