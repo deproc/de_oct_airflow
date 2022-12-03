@@ -1,5 +1,5 @@
 --update DIM table
-CREATE OR REPLACE TABLE "ETL_AF"."DEV_DB"."DIM_COMPANY_PROFILE_GROUP5" AS
+CREATE OR REPLACE TABLE ETL_AF.DEV_DB.DIM_COMPANY_PROFILE_GROUP5 AS
 SELECT * FROM "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE";
 --update fact table:
 --1. store the difference between sorce table and the fact table
