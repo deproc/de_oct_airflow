@@ -53,7 +53,7 @@ with cte as(
 select a.id, b.date, b.open, b.high, b.low, b.close, b.volume, b.adjclose
 from cte b
 left join "US_STOCKS_DAILY"."PUBLIC"."COMPANY_PROFILE" a
-on a.symbol = b.symbol;
+on a.symbol = b.symbol
 
 -- Option2: use merge just as we did for updating the dim table
 -- If we only use merge, we will need to update all the existing rows.
