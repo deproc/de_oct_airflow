@@ -18,10 +18,10 @@ with DAG(
     tags=['qiaoxu'],
     catchup=False,
 ) as dag:
-    StockData_SnowFlakeToSnowFlake = SnowflakeOperator(
+    StockData_SnowFlakeToSnowFlake_QiaoXu = SnowflakeOperator(
        task_id='StockData_SnowFlakeToSnowFlake',
        sql='./StockData_SnowFlakeToSnowFlake.sql',
        split_statements=True,
     )
 
-    StockData_SnowFlakeToSnowFlake
+    StockData_SnowFlakeToSnowFlake_QiaoXu
